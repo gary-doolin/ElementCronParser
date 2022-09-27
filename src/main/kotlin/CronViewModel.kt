@@ -6,5 +6,7 @@ private const val RUN_ME_SIXTY_TIMES = "run_me_sixty_times"
 class CronViewModel {
     fun getNextRun(command: String) {
 
+
+        println(command)
     }
 }
