@@ -1,6 +1,6 @@
 
-private const val TOMORROW = "Tomorrow"
-private const val TODAY = "Today"
+private const val TOMORROW = "tomorrow"
+private const val TODAY = "today"
 
 class GetDailyStatusUseCase {
     fun invoke(scheduledTime: String, currentTime: String) : RunTimeStatus.Daily {

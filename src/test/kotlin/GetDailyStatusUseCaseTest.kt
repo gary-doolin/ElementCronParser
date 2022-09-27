@@ -17,7 +17,7 @@ class GetDailyStatusUseCaseTest {
 
         val scheduleStatus = useCase.invoke(scheduledTime, currentTime)
 
-        assertEquals("16:30 Today", scheduleStatus.status)
+        assertEquals("16:30 today", scheduleStatus.status)
     }
 
     @Test
@@ -27,7 +27,7 @@ class GetDailyStatusUseCaseTest {
 
         val scheduleStatus = useCase.invoke(scheduledTime, currentTime)
 
-        assertEquals("15:20 Tomorrow", scheduleStatus.status)
+        assertEquals("15:20 tomorrow", scheduleStatus.status)
     }
 
     @Test
@@ -37,7 +37,7 @@ class GetDailyStatusUseCaseTest {
 
         val scheduleStatus = useCase.invoke(scheduledTime, currentTime)
 
-        assertEquals("16:20 Tomorrow", scheduleStatus.status)
+        assertEquals("16:20 tomorrow", scheduleStatus.status)
     }
 
     @Test
@@ -47,6 +47,6 @@ class GetDailyStatusUseCaseTest {
 
         val scheduleStatus = useCase.invoke(scheduledTime, currentTime)
 
-        assertEquals("16:40 Today", scheduleStatus.status)
+        assertEquals("16:40 today", scheduleStatus.status)
     }
 }
