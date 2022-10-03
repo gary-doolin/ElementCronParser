@@ -1,5 +1,7 @@
+package usecases
+
 class GetHourlyStatusUseCase {
-    fun invoke(scheduledTime: String, currentTime: String): RunTimeStatus.Hourly {
+    fun invoke(scheduledTime: String, currentTime: String): String {
         val scheduledTimeElements = scheduledTime.trim().split("\\s+".toRegex())
         val scheduledTimeMinute = scheduledTimeElements[0].toInt()
 
@@ -8,12 +10,10 @@ class GetHourlyStatusUseCase {
         val currentTimeHourInt = currentTimeHourString.toInt()
         val currentTimeMinute = currentTimeElements[1].toInt()
 
-        val nextScheduledTime = if (scheduledTimeMinute > currentTimeMinute)
+        return if (scheduledTimeMinute > currentTimeMinute)
             getNextHourlyRunTime(currentTimeHourInt, scheduledTimeMinute)
         else
-            getNextHourlyRunTime(currentTimeHourInt+1, scheduledTimeMinute)
-
-        return RunTimeStatus.Hourly(nextScheduledTime)
+            getNextHourlyRunTime(currentTimeHourInt + 1, scheduledTimeMinute)
     }
 
     private fun getNextHourlyRunTime(hour: Int, scheduledTimeMinute:Int) =

@@ -1,12 +1,13 @@
+package usecases
 
-private const val TOMORROW = "tomorrow"
 private const val TODAY = "today"
+private const val TOMORROW = "tomorrow"
 
 class GetDailyStatusUseCase {
-    fun invoke(scheduledTime: String, currentTime: String) : RunTimeStatus.Daily {
+    fun invoke(scheduledTime: String, currentTime: String) : String{
         val day = getScheduledDay(scheduledTime, currentTime)
         val time = getFormattedScheduledTime(scheduledTime)
-        return RunTimeStatus.Daily("$time $day")
+        return "$time $day"
     }
 
     private fun getScheduledDay(scheduledTime: String, currentTime: String): String {

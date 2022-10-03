@@ -1,3 +1,5 @@
+package usecases
+
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -15,6 +17,6 @@ class GetMinuteStatusUseCaseTest {
     fun `when invoke is called, run time status is current time`() {
         val runTimeStatus = useCase.invoke("15:10")
 
-        assertEquals("15:10 today", runTimeStatus.status)
+        assertEquals("15:10 today", runTimeStatus)
     }
 }

@@ -1,3 +1,5 @@
+package usecases
+
 import org.junit.jupiter.api.Test
 import kotlin.test.BeforeTest
 import kotlin.test.assertEquals
@@ -17,7 +19,7 @@ class GetDailyStatusUseCaseTest {
 
         val scheduleStatus = useCase.invoke(scheduledTime, currentTime)
 
-        assertEquals("16:30 today", scheduleStatus.status)
+        assertEquals("16:30 today", scheduleStatus)
     }
 
     @Test
@@ -27,7 +29,7 @@ class GetDailyStatusUseCaseTest {
 
         val scheduleStatus = useCase.invoke(scheduledTime, currentTime)
 
-        assertEquals("15:20 tomorrow", scheduleStatus.status)
+        assertEquals("15:20 tomorrow", scheduleStatus)
     }
 
     @Test
@@ -37,7 +39,7 @@ class GetDailyStatusUseCaseTest {
 
         val scheduleStatus = useCase.invoke(scheduledTime, currentTime)
 
-        assertEquals("16:20 tomorrow", scheduleStatus.status)
+        assertEquals("16:20 tomorrow", scheduleStatus)
     }
 
     @Test
@@ -47,6 +49,6 @@ class GetDailyStatusUseCaseTest {
 
         val scheduleStatus = useCase.invoke(scheduledTime, currentTime)
 
-        assertEquals("16:40 today", scheduleStatus.status)
+        assertEquals("16:40 today", scheduleStatus)
     }
 }

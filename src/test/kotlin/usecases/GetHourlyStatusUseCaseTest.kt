@@ -1,3 +1,5 @@
+package usecases
+
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -16,7 +18,7 @@ class GetHourlyStatusUseCaseTest {
         val currentTime = "16:30"
         val runTimeStatus = useCase.invoke(scheduledTime, currentTime)
 
-        assertEquals("16:33 today", runTimeStatus.status)
+        assertEquals("16:33 today", runTimeStatus)
     }
 
     @Test
@@ -25,6 +27,6 @@ class GetHourlyStatusUseCaseTest {
         val currentTime = "16:34"
         val runTimeStatus = useCase.invoke(scheduledTime, currentTime)
 
-        assertEquals("17:33 today", runTimeStatus.status)
+        assertEquals("17:33 today", runTimeStatus)
     }
 }
