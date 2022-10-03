@@ -16,7 +16,6 @@ dependencies {
     testImplementation("org.jetbrains.kotlin:kotlin-test:1.7.10")
     testImplementation("io.mockk:mockk:1.12.8")
     testImplementation("junit:junit:4.13.2")
-    implementation("io.insert-koin:koin-core:3.2.2")
 }
 
 tasks.test {
