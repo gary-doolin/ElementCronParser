@@ -1,5 +1,6 @@
 package usecases
 
+import ConfigItem
 import org.junit.jupiter.api.Test
 import kotlin.test.BeforeTest
 import kotlin.test.assertEquals
@@ -14,41 +15,39 @@ class GetDailyStatusUseCaseTest {
 
     @Test
     fun `when scheduled time (hour) is greater than current time (hour), day is today`() {
-        val scheduledTime = "30 16"
         val currentTime = "13:10"
+        val configItem = ConfigItem("30 16", "/bin/run_me_daily")
+        val scheduleStatus = useCase.invoke(configItem, currentTime)
 
-        val scheduleStatus = useCase.invoke(scheduledTime, currentTime)
-
-        assertEquals("16:30 today", scheduleStatus)
+        assertEquals("16:30 today /bin/run_me_daily", scheduleStatus)
     }
 
     @Test
     fun `when scheduled time (hour) is less than current time (hour), day is tomorrow`() {
-        val scheduledTime = "20 15"
         val currentTime = "16:30"
+        val configItem = ConfigItem("20 15", "/bin/run_me_daily")
+        val scheduleStatus = useCase.invoke(configItem, currentTime)
 
-        val scheduleStatus = useCase.invoke(scheduledTime, currentTime)
-
-        assertEquals("15:20 tomorrow", scheduleStatus)
+        assertEquals("15:20 tomorrow /bin/run_me_daily", scheduleStatus)
     }
 
     @Test
     fun `when scheduled time (hour) is equal to current time (hour), scheduled time (minutes) are less than current time (minutes), day is tomorrow`() {
-        val scheduledTime = "20 16"
         val currentTime = "16:30"
+        val configItem = ConfigItem("20 16", "/bin/run_me_daily")
 
-        val scheduleStatus = useCase.invoke(scheduledTime, currentTime)
+        val scheduleStatus = useCase.invoke(configItem, currentTime)
 
-        assertEquals("16:20 tomorrow", scheduleStatus)
+        assertEquals("16:20 tomorrow /bin/run_me_daily", scheduleStatus)
     }
 
     @Test
     fun `when scheduled time (hour) is equal to current time (hour), scheduled time (minutes) are greater than current time (minutes), day is today`() {
-        val scheduledTime = "40 16"
         val currentTime = "16:30"
+        val configItem = ConfigItem("40 16", "/bin/run_me_daily")
 
-        val scheduleStatus = useCase.invoke(scheduledTime, currentTime)
+        val scheduleStatus = useCase.invoke(configItem, currentTime)
 
-        assertEquals("16:40 today", scheduleStatus)
+        assertEquals("16:40 today /bin/run_me_daily", scheduleStatus)
     }
 }

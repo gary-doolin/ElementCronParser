@@ -1,5 +1,5 @@
 package usecases
 
 class GetMinuteStatusUseCase {
-    fun invoke(currentTime: String): String = "$currentTime today"
+    fun invoke(currentTime: String, command: String): String = "$currentTime today $command"
 }

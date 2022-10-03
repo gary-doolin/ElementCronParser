@@ -1,21 +1,22 @@
 package usecases
 
-class GetHourlyStatusUseCase {
-    fun invoke(scheduledTime: String, currentTime: String): String {
-        val scheduledTimeElements = scheduledTime.trim().split("\\s+".toRegex())
-        val scheduledTimeMinute = scheduledTimeElements[0].toInt()
+import ConfigItem
 
+class GetHourlyStatusUseCase {
+    fun invoke(configItem: ConfigItem, currentTime: String): String {
+        val scheduledTimeElements = configItem.scheduledTime.trim().split("\\s+".toRegex())
+        val scheduledTimeMinute = scheduledTimeElements[0].toInt()
         val currentTimeElements = currentTime.split(":")
         val currentTimeHourString = currentTimeElements[0]
         val currentTimeHourInt = currentTimeHourString.toInt()
         val currentTimeMinute = currentTimeElements[1].toInt()
 
         return if (scheduledTimeMinute > currentTimeMinute)
-            getNextHourlyRunTime(currentTimeHourInt, scheduledTimeMinute)
+            getNextHourlyRunTime(configItem, currentTimeHourInt, scheduledTimeMinute)
         else
-            getNextHourlyRunTime(currentTimeHourInt + 1, scheduledTimeMinute)
+            getNextHourlyRunTime(configItem, currentTimeHourInt + 1, scheduledTimeMinute)
     }
 
-    private fun getNextHourlyRunTime(hour: Int, scheduledTimeMinute:Int) =
-        "$hour:$scheduledTimeMinute today"
+    private fun getNextHourlyRunTime(configItem: ConfigItem, hour: Int, scheduledTimeMinute:Int) =
+        "$hour:$scheduledTimeMinute today "+configItem.command
 }

@@ -1,13 +1,15 @@
 package usecases
 
+import ConfigItem
+
 private const val TODAY = "today"
 private const val TOMORROW = "tomorrow"
 
 class GetDailyStatusUseCase {
-    fun invoke(scheduledTime: String, currentTime: String) : String{
-        val day = getScheduledDay(scheduledTime, currentTime)
-        val time = getFormattedScheduledTime(scheduledTime)
-        return "$time $day"
+    fun invoke(configItem: ConfigItem, currentTime: String) : String{
+        val day = getScheduledDay(configItem.scheduledTime, currentTime)
+        val time = getFormattedScheduledTime(configItem.scheduledTime)
+        return "$time $day ${configItem.command}"
     }
 
     private fun getScheduledDay(scheduledTime: String, currentTime: String): String {
