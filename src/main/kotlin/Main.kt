@@ -1,8 +1,25 @@
+import mapper.ConfigListItemMapper
+import usecases.*
+import viewmodel.CronViewModel
+import java.io.File
+
 fun main(args: Array<String>) {
-    println("Hello World!")
 
-    // Try adding program arguments via Run/Debug configuration.
-    // Learn more about running applications: https://www.jetbrains.com/help/idea/running-applications.html.
-    println("Program arguments: ${args.joinToString()}")
+    val mapper = ConfigListItemMapper()
+    val getHourlyStatusUseCase = GetHourlyStatusUseCase()
+    val getDailyStatusUseCase = GetDailyStatusUseCase()
+    val getSixtyStatusUseCase = GetSixtyStatusUseCase()
+    val getMinuteStatusUseCase = GetMinuteStatusUseCase()
+    val getConfigItemListUseCase = GetConfigItemListUseCase(mapper)
+    val viewModel = CronViewModel(
+        getHourlyStatusUseCase,
+        getDailyStatusUseCase,
+        getSixtyStatusUseCase,
+        getMinuteStatusUseCase,
+        getConfigItemListUseCase
+    )
 
+    val configList = readFileToList(args[1])
+    viewModel.getNextScheduledRun(args[0], configList)
 }
+private fun readFileToList(fileName: String): List<String> = File(fileName).readLines()
