@@ -21,7 +21,7 @@ ConfigListItemMapper is added to allowing mapping from each line of the input fi
 
 All classes that are testable have 100% code coverage, this can be verified by running tests in intellij with coverage. 
 
-The code is structured in such a way that uses manual dependency injection.  Ordinarily this would be done using koin or some other dependency injection library. 
+The code is structured in such a way that uses manual dependency injection.  Ordinarily this would be done using dagger hilt or some other dependency injection library. 
 
 The code contains zero comments and this is intentional. With clean code it should read easily and be self explanatory.
 
