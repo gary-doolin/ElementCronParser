@@ -25,7 +25,7 @@ class CronViewModel (
                     RUN_ME_HOURLY -> getHourlyStatusUseCase.invoke(configItem, currentTime)
                     RUN_ME_EVERY_MINUTE -> getMinuteStatusUseCase.invoke(currentTime, configItem.command)
                     RUN_ME_SIXTY_TIMES -> getSixtyStatusUseCase.invoke(configItem)
-                    else -> "Invalid Command"
+                    else -> configItem.command +" is an Invalid Command"
                 }
             println(scheduleStatus)
         }
