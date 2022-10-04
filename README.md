@@ -6,7 +6,11 @@
 
 - Project contains stdin support
 
+**Purpose:**
+
 There are a set of tasks, that as specified by the config input file.  The purpose of this project is based on the current time passed as a parameter, to ascertain when each task will run next. 
+
+**Approach:**
 
 I have approached the development of this test, much in the way I would approach my android development. 
 
